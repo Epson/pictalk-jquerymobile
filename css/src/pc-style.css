@@ -1,0 +1,10 @@
+.content {
+	margin: 0 auto;
+  width: 500px;
+  height: 660;
+}
+
+#footer, #header {
+	margin: 0 auto;
+	width: 530px;
+}

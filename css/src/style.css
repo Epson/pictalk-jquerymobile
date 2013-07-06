@@ -1,0 +1,129 @@
+#index-image {
+  display: block;
+  margin: 0 auto;
+  z-index: 99;
+  width: 500px;
+}
+
+#index-image img {
+  position:absolute;
+  left:0px;
+  top:25%;
+  width:100%;
+  height:35%;
+  z-index: 0;
+}
+
+.bg-image {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100%;
+  z-index: 0;
+}
+
+#index-content {
+  position:relative;
+}
+
+#index-login-btn {
+  position: absolute;
+  bottom: 5%;
+  left: 15%;
+  width: 30%;
+}
+
+#index-register-btn {
+  position: absolute;
+  bottom: 5%;
+  right: 15%;
+  width: 30%
+}
+
+#login-image {
+  display: block;
+  margin: 0 auto;
+  z-index: 99;
+  width: 500px;
+}
+
+#login-image img {
+  position:absolute;
+  left: 10%;
+  top:0px;
+  width:80%;
+  height:40%;
+  z-index: 0;
+}
+
+.bg-image {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100%;
+  z-index: 0;
+}
+
+#login-form {
+  position:absolute;
+  top: 45%;
+  width: 90%;
+}
+
+#login-form a {
+  position: absolute;
+  right: 10%;
+  margin-top: 10px;
+}
+
+#login-btn {
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 30%;
+}
+
+#login-register-btn {
+  position: absolute;
+  bottom: 20%;
+  right: 15%;
+  width: 30%
+}
+
+.footer-button {
+  float: left;
+  margin-left: 14%;
+  width: 7%;
+}
+
+.footer-button img {
+  width: 100%;
+}
+
+.clear {
+  clear: both;
+}
+
+#footer-container {
+  width: 80%;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  font-size: 11pt;
+  color: #aaaaaa;
+  font-weight: normal;
+}
+
+#mes-list {
+  padding: 10px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#mes-list li {
+  padding: 10px;
+}
