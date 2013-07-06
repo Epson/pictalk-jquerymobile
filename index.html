@@ -1,0 +1,72 @@
+<html>
+  <head>
+      <meta name="viewport" charset="utf-8" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+      <title>index</title>
+      <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" /> -->
+      <!-- <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
+      <!-- <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script> -->
+
+      <link rel="stylesheet" href="css/lib/jquery.mobile-1.3.1.min.css" />
+      <link rel="stylesheet" href="css/src/style.css" />
+      <script src="js/lib/jquery-1.9.1.min.js"></script>
+      <script src="js/lib/jquery.mobile-1.3.1.min.js"></script>
+  </head>
+
+  <body>
+    <div data-role="page">
+      <div data-role="content" id="index-content" class="content">
+        <img src="images/index_bg.png" class="bg-image" />
+        <!-- <input type="text" name="name" placeholder="用户名" value="" />
+        <input type="text" name="password" placeholder="密码" value=""/> -->
+        <span id="index-image">
+          <img src="images/index_slide_1.png" />
+        </span>
+
+        <span class id="index-login-btn">
+          <a href="javascript:void(0);" data-role="button">登录</a>
+        </span>
+        <span id="index-register-btn">
+          <a href="javascript:void(0);" data-role="button">注册</a>
+        </span>
+      </div><!-- /content -->
+    </div><!-- /page -->
+  </body>
+
+  <script type="text/javascript" src="js/bin/initStyle.js"></script>
+  <script type="text/javascript">
+    // function initMobileStyle() {
+    //   var width = screen.availWidth;
+    //   var height = screen.availHeight;
+
+    //   var indexContent = document.getElementById("index-content");
+    //   indexContent.style.width = width - 20 + "px";
+    //   indexContent.style.height = height - 30 + "px";
+    // }
+
+    // function loadStyleFile(fileName) {
+    //   fileref = document.createElement("link");
+    //   fileref.rel = "stylesheet"; 
+    //   fileref.type = "text/css"; 
+    //   fileref.href = "css/src/" + fileName + ".css"; 
+    //   fileref.media = "screen"; 
+    //   var headobj = document.getElementsByTagName('head')[0]; 
+    //   headobj.appendChild(fileref); 
+    // }
+
+    // if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+    //   // Apple-device?
+    //   initMobileStyle();
+    // } else if(navigator.userAgent.match(/Android/i)) {
+    //   // Android-device?
+    //   initMobileStyle();
+    // } else {
+    //   // PC
+    //   // $(".content").addClass("style-in-pc-content");
+    //   loadStyleFile("pc-style")
+    // }
+    
+  </script>
+</html>
+
+
+
