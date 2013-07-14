@@ -17,8 +17,8 @@
   };
   $(document).on("click", "#register-btn", function(){
     var email, password;
-    email = $('#login-form input[name="email"]').val();
-    password = $('#login-form input[name="password"]').val();
+    email = $('#register-form input[name="email"]').val();
+    password = $('#register-form input[name="password"]').val();
     userRegister(email, password);
   });
 }).call(this);

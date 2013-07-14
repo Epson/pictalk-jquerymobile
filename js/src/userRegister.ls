@@ -12,6 +12,6 @@ user-register = !(email, password)->
 		console.log "register successful"
 do
 	<-! $ document .on "click", "\#register-btn"
-	email = $ '\#login-form input[name="email"]' .val!
-	password = $ '\#login-form input[name="password"]' .val!
+	email = $ '\#register-form input[name="email"]' .val!
+	password = $ '\#register-form input[name="password"]' .val!
 	user-register email, password
