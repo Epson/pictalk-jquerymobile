@@ -1,7 +1,18 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+
 #index-image {
   display: block;
   margin: 0 auto;
   z-index: 99;
+}
+
+#footer, #header {
+  margin: 0 auto;
+  /*height: 7%;*/
 }
 
 #index-image img {
@@ -26,18 +37,16 @@
   position:relative;
 }
 
-#show-page, #index-page, #login-page, #register-page {
-  height: 100%;
+#index-page, #login-page, #register-page {
+  height: 89%;
 }
 
 #index-content, #login-content, #register-content {
   height: 95.5%;
 }
 
-#show-content {
+#show-content, #contact-content {
   padding: 0px;
-  width: 530px;
-  height: 89%;
 }
 
 #show-search-wrapper {
@@ -116,27 +125,33 @@
   right: 15%;
   width: 30%
 }
-
+/*
 .footer-button {
   float: left;
-  margin-left: 14%;
-  width: 7%;
+  width: 25%;
+}
+
+.footer-button:hover {
+  background-image: linear-gradient( #111111, #3c3c3c);
 }
 
 .footer-button img {
-  width: 100%;
-}
+  display: inline-block;
+  margin-left: 30%;
+  width: 40%;
+  height: 100%;
+}*/
 
 .clear {
   clear: both;
 }
 
-#footer-container {
-  width: 80%;
-  height: 30px;
+/*#footer-container {
+  width: 100%;
   margin: 0 auto;
+  height: 100%;
 }
-
+*/
 .footer-text {
   font-size: 11pt;
   color: #aaaaaa;
@@ -152,7 +167,48 @@
   padding: 10px;
 }
 
-#mes-list li .show-content {
+.show-content {
   font-weight: normal;
   color: gray;
+}
+
+.contact-description {
+  font-weight: normal;
+  color: gray;
+}
+
+#footer-navbar .ui-icon {
+  width: 30px!important; 
+  height: 30px!important; 
+  margin-left: -15px !important; 
+  box-shadow: none!important; 
+  -moz-box-shadow: none!important; 
+  -webkit-box-shadow: none!important; 
+  -webkit-border-radius: 0 !important; 
+  border-radius: 0 !important;
+  top: 0px !important;
+}
+
+.home .ui-icon {
+  background:  url(../../images/icon_home.png) 50% 50% no-repeat; 
+  background-size: 30px 30px; 
+}
+
+.contact .ui-icon {
+  background:  url(../../images/icon_contact.png) 50% 50% no-repeat; 
+  background-size: 30px 30px; 
+}
+
+.like .ui-icon {
+  background:  url(../../images/icon_like.png) 50% 50% no-repeat; 
+  background-size: 30px 30px; 
+}
+
+.setting .ui-icon {
+  background:  url(../../images/icon_setting.png) 50% 50% no-repeat; 
+  background-size: 30px 30px; 
+}
+
+#footer-navbar .ui-btn-text {
+  color: #aaaaaa;
 }

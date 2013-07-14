@@ -10,6 +10,7 @@ user-register = !(email, password)->
 		console.log "error occurs"
 	else 
 		console.log "register successful"
+		jQuery.mobile.changePage("\#show-page");
 do
 	<-! $ document .on "click", "\#register-btn"
 	email = $ '\#register-form input[name="email"]' .val!

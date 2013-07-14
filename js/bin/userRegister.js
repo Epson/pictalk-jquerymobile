@@ -12,6 +12,7 @@
         console.log("error occurs");
       } else {
         console.log("register successful");
+        jQuery.mobile.changePage("#show-page");
       }
     });
   };
