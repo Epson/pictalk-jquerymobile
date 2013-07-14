@@ -23,8 +23,27 @@
   z-index: 0;
 }
 
-#index-content {
+#index-content, #register-content, #login-content, #show-content {
   position:relative;
+}
+
+#show-page, #index-page, #login-page, #register-page {
+  height: 100%;
+}
+
+#index-content, #login-content, #register-content {
+  height: 95.5%;
+}
+
+#show-content {
+  padding: 0px;
+  width: 530px;
+  height: 89%;
+}
+
+#show-search-wrapper {
+  margin: 0 auto;
+  width: 95%;
 }
 
 #index-login-btn {
@@ -41,14 +60,14 @@
   width: 30%
 }
 
-#login-image {
+#login-image, #register-image {
   display: block;
   margin: 0 auto;
   z-index: 99;
   width: 500px;
 }
 
-#login-image img {
+#login-image img, #register-image img {
   position:absolute;
   left: 10%;
   top:0px;
@@ -66,7 +85,7 @@
   z-index: 0;
 }
 
-#login-form {
+#login-form, #register-form{
   position:absolute;
   top: 45%;
   width: 90%;
@@ -78,10 +97,17 @@
   margin-top: 10px;
 }
 
-#login-btn {
+#login-btn-wrapper {
   position: absolute;
   bottom: 20%;
   left: 15%;
+  width: 30%;
+}
+
+#register-btn-wrapper {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
   width: 30%;
 }
 
@@ -119,11 +145,15 @@
 }
 
 #mes-list {
-  padding: 10px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
 #mes-list li {
   padding: 10px;
+}
+
+#mes-list li .show-content {
+  font-weight: normal;
+  color: gray;
 }

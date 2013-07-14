@@ -7,65 +7,121 @@
       <!-- <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script> -->
 
       <link rel="stylesheet" href="css/lib/jquery.mobile-1.3.1.min.css" />
+      <link rel="stylesheet" href="css/themes/jquerymobile-swatch.min.css" />
       <link rel="stylesheet" href="css/src/style.css" />
       <script src="js/lib/jquery-1.9.1.min.js"></script>
       <script src="js/lib/jquery.mobile-1.3.1.min.js"></script>
   </head>
 
   <body>
-    <div data-role="page">
+    <div id="index-page" data-role="page">
       <div data-role="content" id="index-content" class="content">
         <img src="images/index_bg.png" class="bg-image" />
-        <!-- <input type="text" name="name" placeholder="用户名" value="" />
-        <input type="text" name="password" placeholder="密码" value=""/> -->
         <span id="index-image">
           <img src="images/index_slide_1.png" />
         </span>
-
         <span class id="index-login-btn">
-          <a href="javascript:void(0);" data-role="button">登录</a>
+          <a href="#login-page" data-role="button">登录</a>
         </span>
         <span id="index-register-btn">
-          <a href="javascript:void(0);" data-role="button">注册</a>
+          <a href="#register-page" data-role="button">注册</a>
         </span>
       </div><!-- /content -->
-    </div><!-- /page -->
+    </div><!-- /index-page -->
+
+    <div id="login-page" data-role="page" data-add-back-btn="true">
+      <div data-role="content" id="login-content" class="content">
+        <img src="images/login_bg.png" class="bg-image" />
+        <div id="login-image">
+          <img src="images/login_logo.png" />
+        </div>
+        <div id="login-form">
+          <input type="text" name="email" placeholder="电子邮件地址(email)" value="" />
+          <input type="password" name="password" placeholder="密码(password)" value=""/>
+          <a href="javascript:void(0);">忘记密码?</a>
+        </div> 
+        <div id="login-btn-wrapper">
+          <a href="javascript:void(0);" id="login-btn" data-theme="f" data-role="button">
+            登录
+          </a>
+        </div>
+        <div id="login-register-btn">
+          <a href="#register-page" data-role="button">
+            注册
+          </a>
+        </div>
+      </div><!-- /content -->
+    </div><!-- /login-page -->
+
+    <div id="register-page" data-role="page" data-add-back-btn="true">
+      <div data-role="content" id="register-content" class="content">
+        <img src="images/login_bg.png" class="bg-image" />
+        <div id="register-image">
+          <img src="images/login_logo.png" />
+        </div>
+        <div id="register-form">
+          <input type="text" name="email" placeholder="电子邮件地址(email)" value="" />
+          <input type="password" name="password" placeholder="密码(password)" value=""/>
+          <input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+        <label for="checkbox-1">我已经阅读《图吖用户使用注意事项》</label>
+        </div> 
+        <div id="register-btn-wrapper">
+          <a href="javascript:void(0);" id="register-btn" data-role="button" data-theme="f">
+            注册
+          </a>
+        </div>
+      </div><!-- /content -->
+    </div><!-- /register-page -->
+
+    <div id="show-page" data-role="page" data-theme="b" data-add-back-btn="true">
+      <div data-role="header" id="header">
+        <h4>图吖</h4>
+      </div>
+      <div data-role="content" id="show-content" class="content">
+        <div id="show-search-wrapper">
+          <input type="search" name="search" placeholder="搜索" value="" />
+        </div>
+        <ul data-role="listview" data-theme="c" id="mes-list">
+          <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">CyrilZhao</span> <br/> <br />
+                <span class="show-content">快来看看这张图片怎么样~</span>
+              </a>
+          </li>
+          <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+        </ul>
+      </div><!-- /content -->
+      <div data-role="footer" id="footer">
+        <div id="footer-container">
+          <div class="footer-button">
+            <img src="images/icon_home.png" />
+          </div>
+          <div class="footer-button">
+            <img src="images/icon_contact.png" />
+          </div>
+          <div class="footer-button">
+            <img src="images/icon_like.png" />
+          </div>
+          <div class="footer-button">
+            <img src="images/icon_setting.png" />
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div><!-- /show-page -->
   </body>
 
+
   <script type="text/javascript" src="js/bin/initStyle.js"></script>
-  <script type="text/javascript">
-    // function initMobileStyle() {
-    //   var width = screen.availWidth;
-    //   var height = screen.availHeight;
-
-    //   var indexContent = document.getElementById("index-content");
-    //   indexContent.style.width = width - 20 + "px";
-    //   indexContent.style.height = height - 30 + "px";
-    // }
-
-    // function loadStyleFile(fileName) {
-    //   fileref = document.createElement("link");
-    //   fileref.rel = "stylesheet"; 
-    //   fileref.type = "text/css"; 
-    //   fileref.href = "css/src/" + fileName + ".css"; 
-    //   fileref.media = "screen"; 
-    //   var headobj = document.getElementsByTagName('head')[0]; 
-    //   headobj.appendChild(fileref); 
-    // }
-
-    // if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
-    //   // Apple-device?
-    //   initMobileStyle();
-    // } else if(navigator.userAgent.match(/Android/i)) {
-    //   // Android-device?
-    //   initMobileStyle();
-    // } else {
-    //   // PC
-    //   // $(".content").addClass("style-in-pc-content");
-    //   loadStyleFile("pc-style")
-    // }
-    
-  </script>
+  <script type="text/javascript" src="js/bin/userRegister.js"></script>
+  <script type="text/javascript" src="js/bin/userLogin.js"></script>
 </html>
 
 
