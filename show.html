@@ -13,34 +13,122 @@
   </head>
 
   <body>
-    <div id="show-page" data-role="page" data-theme="b" data-add-back-btn="true">
-      <div data-role="header" id="header">
-        <h4>图吖</h4>
+    <div id="show-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
+      <div data-role="header" class="header" data-position="fixed">
+        <h4>聊天</h4>
       </div>
-      <div data-role="content" id="index-content" class="content">
+      <div data-role="content" id="show-content" class="content">
+        <div id="show-search-wrapper">
+          <input type="search" name="search" placeholder="搜索" value="" />
+        </div>
         <ul data-role="listview" data-theme="c" id="mes-list">
           <li>
-              <a href="acura.html">
+              <a href="">
                 <img src="images/1.jpeg"/>
+                <span class="show-title">CyrilZhao</span> <br/> <br />
+                <span class="show-content">快来看看这张图片怎么样~</span>
+              </a>
+          </li>
+          <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">今天天气不错哦~~</span>
+              </a>
+          </li>
+           <li>
+              <a href="">
+                <img src="images/1.jpeg"/>
+                <span class="show-title">Jane</span> <br/> <br />
+                <span class="show-content">最后一个~~</span>
               </a>
           </li>
         </ul>
       </div><!-- /content -->
-      <div data-role="footer" id="footer">
-        <div id="footer-container">
-          <div class="footer-button">
-            <img src="images/icon_home.png" />
-          </div>
-          <div class="footer-button">
-            <img src="images/icon_contact.png" />
-          </div>
-          <div class="footer-button">
-            <img src="images/icon_like.png" />
-          </div>
-          <div class="footer-button">
-            <img src="images/icon_setting.png" />
-          </div>
-        </div>
+      <div data-role="footer" class="footer" data-position="fixed">
+        <div id="footer-navbar" data-role="navbar">  
+          <ul>  
+            <li>
+              <a href="#show-page" data-iconpos="top" data-icon="custom" class="ui-btn-active ui-state-persist home">
+                首页
+              </a>
+            </li>  
+            <li>
+              <a href="#contact-page" data-iconpos="top" data-icon="custom" class="contact" >
+                <!-- <img src="images/icon_contact.png" /> -->
+                好友
+              </a>
+            </li>  
+            <li>
+              <a href="#like-page" data-iconpos="top" data-icon="custom" class="like">
+                <!-- <img src="images/icon_like.png" /> -->
+                收藏
+              </a>
+            </li>  
+            <li>
+              <a href="#setting-page" data-iconpos="top" data-icon="custom" class="setting">
+                <!-- <img src="images/icon_setting.png" /> -->
+                设置
+              </a>
+            </li>  
+          </ul>  
+        </div><!-- /navbar -->  
         <div class="clear"></div>
       </div>
     </div><!-- /show-page -->

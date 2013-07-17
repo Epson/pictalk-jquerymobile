@@ -21,9 +21,15 @@
         pages[i].style.width = pageWidth + "px";
         pages[i].style.left = screenWidth * 0.5;
         pages[i].style.marginLeft = -(pageWidth / 2) + "px";
+      }
+      for (i$ = 0, to$ = headers.length; i$ < to$; ++i$) {
+        i = i$;
         headers[i].style.width = pageWidth + "px";
         headers[i].style.left = screenWidth * 0.5;
         headers[i].style.marginLeft = -(pageWidth / 2) + "px";
+      }
+      for (i$ = 0, to$ = footers.length; i$ < to$; ++i$) {
+        i = i$;
         footers[i].style.width = pageWidth + "px";
         footers[i].style.left = screenWidth * 0.5;
         footers[i].style.marginLeft = -(pageWidth / 2) + "px";

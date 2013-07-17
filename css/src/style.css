@@ -10,11 +10,6 @@ body {
   z-index: 99;
 }
 
-#footer, #header {
-  margin: 0 auto;
-  /*height: 7%;*/
-}
-
 #index-image img {
   position:absolute;
   left:0px;
@@ -153,13 +148,12 @@ body {
   font-weight: normal;
 }
 
-#mes-list {
-  width: 95%;
+#mes-list, #contact-list {
   border-radius: 10px;
   margin: 0 auto;
 }
 
-#mes-list li {
+#mes-list li, #contact-list li {
   padding: 10px;
 }
 
@@ -209,16 +203,43 @@ body {
   color: #aaaaaa;
 }
 
-#user-info-list {
+#user-info-list-one, #user-info-list-two {
   border-radius: 15px;
   margin: 0 auto;
 }
 
-#user-info-list li {
+#user-info-list-one li, #user-info-list-two li {
   padding: 10px;
 }
 
-#user-info-list li a img {
+#user-info-list-two {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+#user-info-list-one li a img {
   border-radius: 0px;
-  display: block;
+  display: inline-block;
+}
+
+#setting-content {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+#confirm-btn-wrapper {
+  position: absolute;
+  left: 10%;
+  width: 30%;
+  margin-top: 5%;
+  display: inline-block;
+}
+
+#cancel-btn-wrapper {
+  position: absolute;
+  display: inline-block;
+  margin-top: 5%;
+  width: 30%;
+  left: 60%;
 }

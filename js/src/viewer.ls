@@ -27,9 +27,11 @@ Viewer =
 			pages[i].style.width = page-width + "px"
 			pages[i].style.left = screen-width * 0.5
 			pages[i].style.marginLeft = -(page-width / 2) + "px"
+		for i from 0 til headers.length
 			headers[i].style.width = page-width + "px"
 			headers[i].style.left = screen-width * 0.5
 			headers[i].style.marginLeft = -(page-width / 2) + "px"
+		for i from 0 til footers.length
 			footers[i].style.width = page-width + "px"
 			footers[i].style.left = screen-width * 0.5
 			footers[i].style.marginLeft = -(page-width / 2) + "px"

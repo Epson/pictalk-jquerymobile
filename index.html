@@ -75,7 +75,7 @@
 
     <div id="show-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
       <div data-role="header" class="header" data-position="fixed">
-        <h4>图吖</h4>
+        <h4>聊天</h4>
       </div>
       <div data-role="content" id="show-content" class="content">
         <div id="show-search-wrapper">
@@ -195,13 +195,13 @@
 
     <div id="contact-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
       <div data-role="header" class="header" data-position="fixed">
-        <h4>图吖</h4>
+        <h4>好友列表</h4>
       </div>
       <div data-role="content" id="contact-content" class="content">
         <div id="contact-search-wrapper">
           <input type="search" name="search" placeholder="搜索" value="" />
         </div>
-        <ul data-role="listview" data-theme="c" id="mes-list">
+        <ul data-role="listview" data-theme="c" id="contact-list">
           <li>
               <a href="">
                 <img src="images/1.jpeg"/>
@@ -315,14 +315,57 @@
 
     <div id="setting-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
       <div data-role="header" class="header" data-position="fixed">
-        <h4>图吖</h4>
+        <h4>个人信息</h4>
       </div>
       <div data-role="content" id="setting-content" class="content">
         <!-- <input type="file" style="display:none;" /> -->
-        <ul data-role="listview" data-theme="c" id="user-info-list">
+        <ul data-role="listview" data-theme="c" id="user-info-list-one">
+          <li>
+              <a href="javascript:void(0); id='changeAvatar'">
+                <img src="images/1.jpeg"/>
+                <span style="margin-left:25%;display:block;padding-top:20px;">修改头像</span>
+              </a>
+          </li>
           <li>
               <a href="javascript:void(0);">
-                <span>头像</span>
+                <span style="width:40%;display:inline-block;">用户ID</span>
+                <span style="color:gray;">121927532</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:void(0);">
+                <span style="width:40%;display:inline-block;">用户名</span>
+                <span style="color:gray;">CyrilZhao</span>
+              </a>
+              <ul>
+        　　　   <li><a href="">Canary</a></li>
+        　　　   <li><a href="">Cat</a></li>
+        　　  </ul>
+          </li>
+        </ul>
+        <ul data-role="listview" data-theme="c" id="user-info-list-two">
+          <li>
+              <a href="javascript:void(0);">
+                <span style="width:40%;display:inline-block;">真实姓名</span>
+                <span style="color:gray;">赵剑</span>
+              </a>
+          </li>
+           <li>
+              <a href="javascript:void(0);">
+                <span style="width:40%;display:inline-block;">性别</span>
+                <span style="color:gray;">男</span>
+              </a>
+          </li>
+          <li>
+              <a href="#change-mobile-page">
+                <span style="width:40%;display:inline-block;">电话号码</span>
+                <span style="color:gray;">15902094760</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:void(0);">
+                <span style="width:40%;display:inline-block;">电子邮件</span>
+                <span style="color:gray;">121927532@qq.com</span>
               </a>
           </li>
         </ul>
@@ -357,7 +400,59 @@
         </div><!-- /navbar -->  
         <div class="clear"></div>
       </div>
-    </div><!-- /show-page -->
+    </div><!-- /setting-page -->
+
+    <div id="change-mobile-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
+      <div data-role="header" class="header" data-position="fixed">
+        <h4>个人信息</h4>
+      </div>
+      <div data-role="content" id="change-mobile-content" class="content">
+        <div data-role="fieldcontain">
+          <label for="mobile">电话号码：</label>
+          <input type="text" name="mobile" id="password" value="" />
+        </div>
+        <div id="confirm-btn-wrapper">
+          <a href="javascript:void(0);" class="confirm-btn" data-theme="f" data-role="button">
+            确定
+          </a>
+        </div>
+        <div id="cancel-btn-wrapper">
+          <a href="#setting-page" class="cancel-btn"  data-role="button">
+            取消
+          </a>
+        </div>
+      </div><!-- /content -->
+      <div data-role="footer" class="footer" data-position="fixed">
+        <div id="footer-navbar" data-role="navbar">  
+          <ul>  
+            <li>
+              <a href="#show-page" data-iconpos="top" data-icon="custom" class="home">
+                首页
+              </a>
+            </li>  
+            <li>
+              <a href="#contact-page" data-iconpos="top" data-icon="custom" class="contact" >
+                <!-- <img src="images/icon_contact.png" /> -->
+                好友
+              </a>
+            </li>  
+            <li>
+              <a href="#like-page" data-iconpos="top" data-icon="custom" class="like">
+                <!-- <img src="images/icon_like.png" /> -->
+                收藏
+              </a>
+            </li>  
+            <li>
+              <a href="#setting-page" data-iconpos="top" data-icon="custom" class="setting ui-btn-active ui-state-persist">
+                <!-- <img src="images/icon_setting.png" /> -->
+                设置
+              </a>
+            </li>  
+          </ul>  
+        </div><!-- /navbar -->  
+        <div class="clear"></div>
+      </div>
+    </div><!-- /change-mobile-page -->
   </body>
 
 
