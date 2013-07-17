@@ -53,7 +53,7 @@
       </div><!-- /content -->
     </div><!-- /login-page -->
 
-    <div id="register-page" data-role="page" data-add-back-btn="true">
+    <div id="register-page" data-role="page" data-add-back-btn="true" class="page">
       <div data-role="content" id="register-content" class="content">
         <img src="images/login_bg.png" class="bg-image" />
         <div id="register-image">
@@ -73,8 +73,8 @@
       </div><!-- /content -->
     </div><!-- /register-page -->
 
-    <div id="show-page" data-role="page" data-theme="b" data-add-back-btn="true">
-      <div data-role="header" id="header" data-position="fixed">
+    <div id="show-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
+      <div data-role="header" class="header" data-position="fixed">
         <h4>图吖</h4>
       </div>
       <div data-role="content" id="show-content" class="content">
@@ -161,7 +161,7 @@
           </li>
         </ul>
       </div><!-- /content -->
-      <div data-role="footer" id="footer" data-position="fixed">
+      <div data-role="footer" class="footer" data-position="fixed">
         <div id="footer-navbar" data-role="navbar">  
           <ul>  
             <li>
@@ -193,8 +193,8 @@
       </div>
     </div><!-- /show-page -->
 
-    <div id="contact-page" data-role="page" data-theme="b" data-add-back-btn="true">
-      <div data-role="header" id="header" data-position="fixed">
+    <div id="contact-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
+      <div data-role="header" class="header" data-position="fixed">
         <h4>图吖</h4>
       </div>
       <div data-role="content" id="contact-content" class="content">
@@ -216,7 +216,7 @@
                 <span class="contact-description">这是我的签名~~</span>
               </a>
           </li>
-          <li>
+      <!--     <li>
               <a href="">
                 <img src="images/1.jpeg"/>
                 <span class="contact-name">Jane</span> <br/> <br />
@@ -271,7 +271,7 @@
                 <span class="contact-name">Jane</span> <br/> <br />
                 <span class="contact-description">这是我的签名~~</span>
               </a>
-          </li>
+          </li> -->
            <li>
               <a href="">
                 <img src="images/1.jpeg"/>
@@ -281,7 +281,7 @@
           </li>
         </ul>
       </div><!-- /content -->
-      <div data-role="footer" id="footer" data-position="fixed">
+      <div data-role="footer" class="footer" data-position="fixed">
         <div id="footer-navbar" data-role="navbar">  
           <ul>  
             <li>
@@ -312,10 +312,58 @@
         <div class="clear"></div>
       </div>
     </div><!-- /show-page -->
+
+    <div id="setting-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
+      <div data-role="header" class="header" data-position="fixed">
+        <h4>图吖</h4>
+      </div>
+      <div data-role="content" id="setting-content" class="content">
+        <!-- <input type="file" style="display:none;" /> -->
+        <ul data-role="listview" data-theme="c" id="user-info-list">
+          <li>
+              <a href="javascript:void(0);">
+                <span>头像</span>
+              </a>
+          </li>
+        </ul>
+      </div><!-- /content -->
+      <div data-role="footer" class="footer" data-position="fixed">
+        <div id="footer-navbar" data-role="navbar">  
+          <ul>  
+            <li>
+              <a href="#show-page" data-iconpos="top" data-icon="custom" class="home">
+                首页
+              </a>
+            </li>  
+            <li>
+              <a href="#contact-page" data-iconpos="top" data-icon="custom" class="contact" >
+                <!-- <img src="images/icon_contact.png" /> -->
+                好友
+              </a>
+            </li>  
+            <li>
+              <a href="#like-page" data-iconpos="top" data-icon="custom" class="like">
+                <!-- <img src="images/icon_like.png" /> -->
+                收藏
+              </a>
+            </li>  
+            <li>
+              <a href="#setting-page" data-iconpos="top" data-icon="custom" class="setting ui-btn-active ui-state-persist">
+                <!-- <img src="images/icon_setting.png" /> -->
+                设置
+              </a>
+            </li>  
+          </ul>  
+        </div><!-- /navbar -->  
+        <div class="clear"></div>
+      </div>
+    </div><!-- /show-page -->
   </body>
 
 
-  <script type="text/javascript" src="js/bin/initStyle.js"></script>
+  <script type="text/javascript" src="js/bin/Viewer.js"></script>
+  <script type="text/javascript" src="js/bin/Controller.js"></script>
+  <script type="text/javascript" src="js/bin/app.js"></script>
   <script type="text/javascript" src="js/bin/userRegister.js"></script>
   <script type="text/javascript" src="js/bin/userLogin.js"></script>
 </html>

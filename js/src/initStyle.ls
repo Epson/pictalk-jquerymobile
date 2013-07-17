@@ -16,15 +16,7 @@ initMobileStyle = !->
 	indexContent.style.width = width - 20 + "px"
 	indexContent.style.height = height - 30 + "px"
 
-if( (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) 
-	# Apple-device?
-	initMobileStyle!
-else if(navigator.userAgent.match(/Android/i)) 
-	#Android-device?
-	initMobileStyle!
-else
-	#PC
-	loadStyleFile "pc-style"
+
 
 do
 	<-! $(document).bind "mobileinit"

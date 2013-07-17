@@ -33,7 +33,7 @@ body {
   z-index: 0;
 }
 
-#index-content, #register-content, #login-content, #show-content {
+#index-content, #register-content, #login-content{
   position:relative;
 }
 
@@ -45,13 +45,8 @@ body {
   height: 95.5%;
 }
 
-#show-content, #contact-content {
+#show-content, #contact-content, #setting-content {
   padding: 0px;
-}
-
-#show-search-wrapper {
-  margin: 0 auto;
-  width: 95%;
 }
 
 #index-login-btn {
@@ -159,7 +154,8 @@ body {
 }
 
 #mes-list {
-  width: 100%;
+  width: 95%;
+  border-radius: 10px;
   margin: 0 auto;
 }
 
@@ -211,4 +207,18 @@ body {
 
 #footer-navbar .ui-btn-text {
   color: #aaaaaa;
+}
+
+#user-info-list {
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+#user-info-list li {
+  padding: 10px;
+}
+
+#user-info-list li a img {
+  border-radius: 0px;
+  display: block;
 }

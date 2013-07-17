@@ -18,13 +18,6 @@
     indexContent.style.width = width - 20 + "px";
     indexContent.style.height = height - 30 + "px";
   };
-  if (navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
-    initMobileStyle();
-  } else if (navigator.userAgent.match(/Android/i)) {
-    initMobileStyle();
-  } else {
-    loadStyleFile("pc-style");
-  }
   $(document).bind("mobileinit", function(){
     $.mobile.page.prototype.options.addBackBtn = true;
   });
