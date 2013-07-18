@@ -1,10 +1,10 @@
+/**
+ * @author 																赵剑
+ * @description 													事件中心控制器，负责shell和core模块之间事件的托管和分发 
+ * @namespace															EventCenter
+ */
 (function(){
   var EventCenter;
-  /**
-   * @author 																赵剑
-   * @description 													事件中心控制器，负责shell和core模块之间事件的托管和分发 
-   * @namespace															EventCenter
-   */
   EventCenter = {
     /**
       * @member 
@@ -100,5 +100,5 @@
       this.eventList = [];
     }
   };
-  module.exports = EventCenter;
+  window.EventCenter = EventCenter;
 }).call(this);

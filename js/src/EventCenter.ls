@@ -1,4 +1,3 @@
-require! []
 
 /**
  * @author 																赵剑
@@ -93,4 +92,4 @@ EventCenter =
 	init: !->
 		@event-list = []
 
-module.exports = EventCenter
+window.EventCenter = EventCenter

@@ -39,6 +39,11 @@ Viewer =
 	subscrbe-events: !->
 		console.log "subscrbe-events"
 
+	bind-events: !->
+		<-! ($ document) .on "click", "\#changeAvatar"
+		($ "\#upload-file") .click!
+
+
 	init: !->
 		if( (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) 
 			# Apple-device?
@@ -49,6 +54,9 @@ Viewer =
 		else
 			#PC
 			@init-pc-style!
+
+		@subscrbe-events!
+		@bind-events!
 			
  
 window.Viewer = Viewer

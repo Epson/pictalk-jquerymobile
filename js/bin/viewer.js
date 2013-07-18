@@ -38,6 +38,11 @@
     subscrbeEvents: function(){
       console.log("subscrbe-events");
     },
+    bindEvents: function(){
+      $(document).on("click", "#changeAvatar", function(){
+        $("#upload-file").click();
+      });
+    },
     init: function(){
       if (navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
         this.initMobileStyle();
@@ -46,6 +51,8 @@
       } else {
         this.initPcStyle();
       }
+      this.subscrbeEvents();
+      this.bindEvents();
     }
   };
   window.Viewer = Viewer;

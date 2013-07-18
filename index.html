@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <div id="index-page" data-role="page">
+    <div id="index-page" data-role="page" class="page">
       <div data-role="content" id="index-content" class="content">
         <img src="images/index_bg.png" class="bg-image" />
         <span id="index-image">
@@ -29,7 +29,7 @@
       </div><!-- /content -->
     </div><!-- /index-page -->
 
-    <div id="login-page" data-role="page" data-add-back-btn="true">
+    <div id="login-page" data-role="page" data-add-back-btn="true" class="page">
       <div data-role="content" id="login-content" class="content">
         <img src="images/login_bg.png" class="bg-image" />
         <div id="login-image">
@@ -318,10 +318,10 @@
         <h4>个人信息</h4>
       </div>
       <div data-role="content" id="setting-content" class="content">
-        <!-- <input type="file" style="display:none;" /> -->
+        <span style="display:none;" ><input type="file" id="upload-file"/></span>
         <ul data-role="listview" data-theme="c" id="user-info-list-one">
           <li>
-              <a href="javascript:void(0); id='changeAvatar'">
+              <a href="javascript:void(0);" id="changeAvatar">
                 <img src="images/1.jpeg"/>
                 <span style="margin-left:25%;display:block;padding-top:20px;">修改头像</span>
               </a>
@@ -408,7 +408,7 @@
       </div>
       <div data-role="content" id="change-mobile-content" class="content">
         <div data-role="fieldcontain">
-          <label for="mobile">电话号码：</label>
+          <label for="mobile">新电话号码：</label>
           <input type="text" name="mobile" id="password" value="" />
         </div>
         <div id="confirm-btn-wrapper">
