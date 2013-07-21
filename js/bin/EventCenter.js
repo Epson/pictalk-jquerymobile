@@ -11,7 +11,14 @@
       * @public						
      * @description													事件队列，为每一个事件维护一个回调函数列表
       */
-    eventList: null
+    eventList: null,
+    proxy: function(fn, context){
+      return function(){
+        var args;
+        args = Array.prototype.slice.call(arguments, 0);
+        fn.apply(context, args);
+      };
+    }
     /**
      * @method		
      * @public				
@@ -23,6 +30,7 @@
      */,
     trigger: function(eventType, paramArray){
       var events, i$, to$, i, eventHandler;
+      console.log("trigger: " + eventType);
       if (!this.eventList) {
         throw new Error("The eventList was undefined");
       }
@@ -46,6 +54,7 @@
      */,
     bind: function(eventType, callback, context){
       var eventHandler;
+      console.log("bind: " + eventType);
       if (!this.eventList) {
         this.init();
       }

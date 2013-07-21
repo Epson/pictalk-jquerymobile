@@ -62,8 +62,8 @@
         <div id="register-form">
           <input type="email" name="email" placeholder="电子邮件地址(email)" value="" />
           <input type="password" name="password" placeholder="密码(password)" value=""/>
-          <input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
-        <label for="checkbox-1">我已经阅读《图吖用户使用注意事项》</label>
+          <input type="checkbox" name="checkox-for-register" class="custom" />
+          <label for="checkbox-1">我已经阅读《图吖用户使用注意事项》</label>
         </div>
         <div id="register-btn-wrapper">
           <a href="javascript:void(0);" id="register-btn" data-role="button" data-theme="f">
@@ -202,20 +202,13 @@
           <input type="search" name="search" placeholder="搜索" value="" />
         </div>
         <ul data-role="listview" data-theme="c" id="contact-list">
-          <li>
-              <a href="">
+<!--           <li>
+              <a href="javascript:void(0);">
                 <img src="images/1.jpeg"/>
                 <span class="contact-name">CyrilZhao</span> <br/> <br />
                 <span class="contact-description">这是我的签名</span>
               </a>
-          </li>
-          <li>
-              <a href="">
-                <img src="images/1.jpeg"/>
-                <span class="contact-name">Jane</span> <br/> <br />
-                <span class="contact-description">这是我的签名~~</span>
-              </a>
-          </li>
+          </li> -->
       <!--     <li>
               <a href="">
                 <img src="images/1.jpeg"/>
@@ -272,13 +265,13 @@
                 <span class="contact-description">这是我的签名~~</span>
               </a>
           </li> -->
-           <li>
+<!--            <li>
               <a href="">
                 <img src="images/1.jpeg"/>
                 <span class="contact-name">Jane</span> <br/> <br />
                 <span class="contact-description">最后一个~~</span>
               </a>
-          </li>
+          </li> -->
         </ul>
       </div><!-- /content -->
       <div data-role="footer" class="footer" data-position="fixed">
@@ -318,7 +311,11 @@
         <h4>个人信息</h4>
       </div>
       <div data-role="content" id="setting-content" class="content">
-        <span style="display:none;" ><input type="file" id="upload-file"/></span>
+        <span style="display:none;" >
+          <form method="post" id="upload-avatar" action="users/user-upload-avatar" enctype="multipart/form-data">
+            <input type="file" id="upload-file"/>
+          </form>
+        </span>
         <ul data-role="listview" data-theme="c" id="user-info-list-one">
           <li>
               <a href="javascript:void(0);" id="changeAvatar">
@@ -337,10 +334,6 @@
                 <span style="width:40%;display:inline-block;">用户名</span>
                 <span style="color:gray;">CyrilZhao</span>
               </a>
-              <ul>
-        　　　   <li><a href="">Canary</a></li>
-        　　　   <li><a href="">Cat</a></li>
-        　　  </ul>
           </li>
         </ul>
         <ul data-role="listview" data-theme="c" id="user-info-list-two">
@@ -369,6 +362,12 @@
               </a>
           </li>
         </ul>
+
+        <div id="logout-btn">
+          <a href="#logout-dialog" data-theme="f" data-rel="dialog" data-role="button">
+            退出登录
+          </a>
+        </div>
       </div><!-- /content -->
       <div data-role="footer" class="footer" data-position="fixed">
         <div id="footer-navbar" data-role="navbar">  
@@ -402,16 +401,31 @@
       </div>
     </div><!-- /setting-page -->
 
+    <div data-role="page" id="logout-dialog">
+      <div data-role="header">
+        <h1>温馨提示</h1>
+      </div><!-- /header -->
+      <div data-role="content">   
+        确定要退出图吖吗？    
+      </div><!-- /content -->
+      <div data-role="footer">
+         <div id="logout-confirm-button">
+          <a href="javascript:void(0);" data-role="button">确定</a>
+        </div>
+      </div><!-- /footer -->
+    </div><!-- /page -->
+
     <div id="change-mobile-page" data-role="page" data-theme="b" data-add-back-btn="true" class="page">
       <div data-role="header" class="header" data-position="fixed">
         <h4>个人信息</h4>
       </div>
       <div data-role="content" id="change-mobile-content" class="content">
         <div data-role="fieldcontain">
-          <label for="mobile">新电话号码：</label>
-          <input type="text" name="mobile" id="password" value="" />
+          <label style="width:100%;font-size:20px;" for="mobile">新电话号码：</label> 
+          <br /> <br />
+          <input type="text" name="mobile" id="mobile" value="" />
         </div>
-        <div id="confirm-btn-wrapper">
+        <div id="change-mobile-confirm-btn-wrapper">
           <a href="javascript:void(0);" class="confirm-btn" data-theme="f" data-role="button">
             确定
           </a>
@@ -455,12 +469,12 @@
     </div><!-- /change-mobile-page -->
   </body>
 
-
+  <script type="text/javascript" src="js/bin/EventCenter.js"></script>
+  <script type="text/javascript" src="js/bin/User.js"></script>
+  <script type="text/javascript" src="js/bin/Friend.js"></script>
   <script type="text/javascript" src="js/bin/Viewer.js"></script>
   <script type="text/javascript" src="js/bin/Controller.js"></script>
   <script type="text/javascript" src="js/bin/app.js"></script>
-  <script type="text/javascript" src="js/bin/userRegister.js"></script>
-  <script type="text/javascript" src="js/bin/userLogin.js"></script>
 </html>
 
 

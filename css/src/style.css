@@ -226,6 +226,7 @@ body {
 /**********contact*********/
 #contact-content {
   padding: 0px;
+  width: 100%;
 }
 
 #contact-list {
@@ -237,7 +238,7 @@ body {
   padding: 10px;
 }
 
-.contact-description {
+.contact-email {
   font-weight: normal;
   color: gray;
 }
@@ -275,7 +276,7 @@ body {
 /**********setting*********/
 
 /**********change mobile*********/
-#confirm-btn-wrapper {
+#change-mobile-confirm-btn-wrapper {
   position: absolute;
   left: 10%;
   width: 30%;
