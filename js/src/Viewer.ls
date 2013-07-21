@@ -9,6 +9,8 @@ Viewer =
 	# 	headobj = document.getElementsByTagName("head")[0]
 	# 	headobj.appendChild fileref
 
+	is-text-selected: false,
+
 	init-mobile-style: !->
 		width = screen.availWidth	
 		height = screen.availHeight
@@ -86,57 +88,151 @@ Viewer =
 		user-info-list.html user-info-str
 		user-info-list.listview "refresh" 
 
+	set-picture-size: !(img, container)->
+		page = $("\#new-message-page")
+		img-width = container.scroll-width
+		img-height = container.scroll-height
+		header-height = page.find(".header").height!
+		footer-height = page.find(".footer").height!
+		screen-width = container.client-width
+		screen-height = window.inner-height - header-height - footer-height
+		console.log "window.inner-height：" + window.inner-height
+		if img-width < img-height
+			new-img-width = parseInt screen-width
+			new-img-height = parseInt(img-height * ( new-img-width / img-width ) )
+			console.log "keep width"
+			console.log "new-img-width: " + new-img-width
+			console.log "new-img-height: " + new-img-height
+		else 
+			new-img-height = parseInt screen-height
+			new-img-width = parseInt(img-width * ( new-img-height / img-height ))
+			console.log "keep height"
+			console.log "new-img-width: " + new-img-width
+			console.log "new-img-height: " + new-img-height
+		img.style.width = new-img-width + "px"
+		img.style.height = new-img-height + "px"
+		console.log "img-width: " + img-width
+		console.log "img-height: " + img-height
+		console.log "header-height: " + header-height
+		console.log "footer-height: " + footer-height
+		console.log "screen-width: " + screen-width
+		console.log "screen-height: " + screen-height
+		
+	show-new-picture: !(files)->
+		self = this
+		picture-container = $("\#create-picture");
+		picture-container.html ""
+		for i from 0 til files.length
+			file = files[0]
+			reader = new FileReader!
+			reader.onload = !(e)->
+				img-data = e.target.result
+				img = document.createElement "img"
+				img.src = img-data
+				img.id = "picture"
+				picture-container.html img
+				self.set-picture-size img, picture-container[0]
+			reader.readAsDataURL file
+
+	add-text-icon: !(picture, x, y)->
+		img = document.createElement("img")
+		img.src = "images/text_tip.png"
+		img.id = "text-icon"
+		pic-pos-x = picture.offset-left
+		pic-pos-y = picture.offset-top
+		img.style.left = (pic-pos-x + x) + "px"
+		img.style.top = (pic-pos-y + y) + "px"
+		img.style.width = "50px"
+		img.style.height = "50px"
+		picture.parentNode.appendChild img
+
+	add-text: !(picture, x, y)->
+		console.log picture
+		@add-text-icon picture, x, y
 
 	subscrbe-events: !->
 		Event-center.bind "Viewer:show-friend-list", Event-center.proxy this.show-friend-list, this
 		Event-center.bind "Viewer:show-friend-info", Event-center.proxy this.show-friend-info, this
+		Event-center.bind "Viewer:show-new-picture", Event-center.proxy this.show-new-picture, this
 
 	bind-events: !->
+		self = this
+
 		# change avatar
 		do
-			<-! ($ document).on "click", "\#changeAvatar"
-			($ "\#upload-file") .click!
+			<-! $(document).on "click", "\#changeAvatar"
+			$("\#upload-file") .click!
 
 		#upload-avatar
 		do 
-			<-! ($ document).on "change", "\#upload-file"
-			avatar = ($ "\#upload-file")[0]
+			<-! $(document).on "change", "\#upload-file"
+			avatar = $("\#upload-file")[0]
 			Event-center.trigger "Controller:user-update-avatar", [avatar.files[0]]
 			
 		# change mobile
 		do
-			(e) <-! ($ document).on "click", "\#change-mobile-confirm-btn-wrapper"
+			(e) <-! $(document).on "click", "\#change-mobile-confirm-btn-wrapper"
 			mobile = $("input[name='mobile']").val!
 			Event-center.trigger "Controller:user-update-mobile", [mobile]
 			
 		# user login
 		do
-			(e) <-! ($ document).on "click", "\#login-btn"
+			(e) <-! $(document).on "click", "\#login-btn"
 			email = $("\#login-form input[name='email']").val!
 			password = $("\#login-form input[name='password']").val!
 			Event-center.trigger "Controller:user-login", [email, password]
 
 		do
-			(e) <-! ($ document).on "click", "\#logout-confirm-button"
+			(e) <-! $(document).on "click", "\#logout-confirm-button"
 			Event-center.trigger "Controller:user-logout"
 
 		# user register
 		do
-			(e) <-! ($ document).on "click", "\#register-btn"
+			(e) <-! $(document).on "click", "\#register-btn"
 			email = $("\#register-form input[name='email']").val!
 			password = $("\#register-form input[name='password']").val!
 			Event-center.trigger "Controller:user-register", [email, password]
 
 		# read-friend-list
 		do 
-			(e) <-! ($ document).on "click", "a[href='\#contact-page']"
+			(e) <-! $(document).on "click", "a[href='\#contact-page']"
 			Event-center.trigger "Controller:get-friend-list"
 
 		# read-friend-info
 		do 
-			(e) <-! ($ document).on "click", ".contact-info"
+			(e) <-! $(document).on "click", ".contact-info"
 			user-id = $(".contact-email").html!
 			Event-center.trigger "Controller:get-friend-info", [user-id]
+
+		# create-picture
+		do
+			(e) <-! $(document).on "click", ".new-picture"
+			$("\#new-picture").click!
+
+		# upload-avatar
+		do 
+			(e) <-! $(document).on "change", "\#new-picture"
+			files = this.files
+			Event-center.trigger "Viewer:show-new-picture" [files]
+
+		# select text
+		do
+			(e) <-! $(document).on "click", ".add-text"
+			self.is-text-selected = true
+			console.log "select text"
+
+		do
+			(e) <-! $(document).on "click", "\#picture"
+			console.log self.is-text-selected
+			if self.is-text-selected?
+				elem = e.target
+				pos-x = e.offsetX 
+				pos-y = e.offsetY
+				self.add-text this, pos-x, pos-y
+
+		do
+			(e) <-! $(document).on "scroll", "\#create-picture"
+			console.log this.scroll-left
 
 	init: !->
 		if( (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) 
@@ -151,6 +247,6 @@ Viewer =
 
 		@subscrbe-events!
 		@bind-events!
-			
+		$.mobile.fixedtoolbar.prototype.options.tapToggle = false;
  
 window.Viewer = Viewer

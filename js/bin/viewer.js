@@ -1,6 +1,7 @@
 (function(){
   var Viewer;
   Viewer = {
+    isTextSelected: false,
     initMobileStyle: function(){
       var width, height, indexContent;
       width = screen.availWidth;
@@ -62,11 +63,85 @@
       userInfoList.html(userInfoStr);
       userInfoList.listview("refresh");
     },
+    setPictureSize: function(img, container){
+      var page, imgWidth, imgHeight, headerHeight, footerHeight, screenWidth, screenHeight, newImgWidth, newImgHeight;
+      page = $("#new-message-page");
+      imgWidth = container.scrollWidth;
+      imgHeight = container.scrollHeight;
+      headerHeight = page.find(".header").height();
+      footerHeight = page.find(".footer").height();
+      screenWidth = container.clientWidth;
+      screenHeight = window.innerHeight - headerHeight - footerHeight;
+      console.log("window.inner-height：" + window.innerHeight);
+      if (imgWidth < imgHeight) {
+        newImgWidth = parseInt(screenWidth);
+        newImgHeight = parseInt(imgHeight * (newImgWidth / imgWidth));
+        console.log("keep width");
+        console.log("new-img-width: " + newImgWidth);
+        console.log("new-img-height: " + newImgHeight);
+      } else {
+        newImgHeight = parseInt(screenHeight);
+        newImgWidth = parseInt(imgWidth * (newImgHeight / imgHeight));
+        console.log("keep height");
+        console.log("new-img-width: " + newImgWidth);
+        console.log("new-img-height: " + newImgHeight);
+      }
+      img.style.width = newImgWidth + "px";
+      img.style.height = newImgHeight + "px";
+      console.log("img-width: " + imgWidth);
+      console.log("img-height: " + imgHeight);
+      console.log("header-height: " + headerHeight);
+      console.log("footer-height: " + footerHeight);
+      console.log("screen-width: " + screenWidth);
+      console.log("screen-height: " + screenHeight);
+    },
+    showNewPicture: function(files){
+      var self, pictureContainer, i$, to$, i, file, reader;
+      self = this;
+      pictureContainer = $("#create-picture");
+      pictureContainer.html("");
+      for (i$ = 0, to$ = files.length; i$ < to$; ++i$) {
+        i = i$;
+        file = files[0];
+        reader = new FileReader();
+        reader.onload = fn$;
+        reader.readAsDataURL(file);
+      }
+      function fn$(e){
+        var imgData, img;
+        imgData = e.target.result;
+        img = document.createElement("img");
+        img.src = imgData;
+        img.id = "picture";
+        pictureContainer.html(img);
+        self.setPictureSize(img, pictureContainer[0]);
+      }
+    },
+    addTextIcon: function(picture, x, y){
+      var img, picPosX, picPosY;
+      img = document.createElement("img");
+      img.src = "images/text_tip.png";
+      img.id = "text-icon";
+      picPosX = picture.offsetLeft;
+      picPosY = picture.offsetTop;
+      img.style.left = (picPosX + x) + "px";
+      img.style.top = (picPosY + y) + "px";
+      img.style.width = "50px";
+      img.style.height = "50px";
+      picture.parentNode.appendChild(img);
+    },
+    addText: function(picture, x, y){
+      console.log(picture);
+      this.addTextIcon(picture, x, y);
+    },
     subscrbeEvents: function(){
       EventCenter.bind("Viewer:show-friend-list", EventCenter.proxy(this.showFriendList, this));
       EventCenter.bind("Viewer:show-friend-info", EventCenter.proxy(this.showFriendInfo, this));
+      EventCenter.bind("Viewer:show-new-picture", EventCenter.proxy(this.showNewPicture, this));
     },
     bindEvents: function(){
+      var self;
+      self = this;
       $(document).on("click", "#changeAvatar", function(){
         $("#upload-file").click();
       });
@@ -103,6 +178,31 @@
         userId = $(".contact-email").html();
         EventCenter.trigger("Controller:get-friend-info", [userId]);
       });
+      $(document).on("click", ".new-picture", function(e){
+        $("#new-picture").click();
+      });
+      $(document).on("change", "#new-picture", function(e){
+        var files;
+        files = this.files;
+        EventCenter.trigger("Viewer:show-new-picture", [files]);
+      });
+      $(document).on("click", ".add-text", function(e){
+        self.isTextSelected = true;
+        console.log("select text");
+      });
+      $(document).on("click", "#picture", function(e){
+        var elem, posX, posY;
+        console.log(self.isTextSelected);
+        if (self.isTextSelected != null) {
+          elem = e.target;
+          posX = e.offsetX;
+          posY = e.offsetY;
+          self.addText(this, posX, posY);
+        }
+      });
+      $(document).on("scroll", "#create-picture", function(e){
+        console.log(this.scrollLeft);
+      });
     },
     init: function(){
       if (navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
@@ -114,6 +214,7 @@
       }
       this.subscrbeEvents();
       this.bindEvents();
+      $.mobile.fixedtoolbar.prototype.options.tapToggle = false;
     }
   };
   window.Viewer = Viewer;

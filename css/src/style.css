@@ -259,6 +259,40 @@ body {
 
 /**********friend-info************/
 
+/**********new-message************/
+#new-message-page {
+  width: 100%;
+}
+
+#new-message-content {
+  width: 100%;
+  padding: 0px !important;
+}
+
+#create-picture {
+  overflow:auto
+}
+
+.new-picture .ui-icon {
+  background:  url(../../images/btn_open_image_gallary.png) 50% 50% no-repeat; 
+  background-size: 30px 30px; 
+}
+
+.add-text .ui-icon {
+  background:  url(../../images/btn_add_text.png) 50% 50% no-repeat; 
+  background-size: 30px 30px; 
+}
+
+.add-voice .ui-icon {
+  background:  url(../../images/btn_add_voice.png) 50% 50% no-repeat; 
+  background-size: 30px 30px; 
+}
+
+#text-icon {
+  position: absolute;
+}
+/**********new-message************/
+
 /**********setting*********/
 #setting-content {
   padding: 0px;
