@@ -43,7 +43,13 @@
     },
     addFriend: function(friendId){
       console.log("Controller:add-friend");
-      Friend.addFriend("121927532@qq.com", "aaa@qq.com");
+      Friend.addFriend(User.userId, friendId);
+    },
+    getFriendInfo: function(friendId){
+      Friend.getFriendInfo(friendId);
+    },
+    showFriendInfo: function(friendInfo){
+      EventCenter.trigger("Viewer:show-friend-info", [friendInfo]);
     },
     subscribeEvents: function(){
       EventCenter.bind("Controller:user-update-avatar", EventCenter.proxy(this.uploadAvatar, this));
@@ -54,6 +60,7 @@
       EventCenter.bind("Controller:get-friend-list", EventCenter.proxy(this.getFriendList, this));
       EventCenter.bind("Controller:show-friend-list", EventCenter.proxy(this.showFriendList, this));
       EventCenter.bind("Controller:get-friend-info", EventCenter.proxy(this.getFriendInfo, this));
+      EventCenter.bind("Controller:show-friend-info", EventCenter.proxy(this.showFriendInfo, this));
     },
     init: function(){
       this.subscribeEvents();

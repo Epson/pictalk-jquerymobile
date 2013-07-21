@@ -244,6 +244,21 @@ body {
 }
 /**********contact*********/
 
+/**********friend-info************/
+#friend-avatar {
+  margin-bottom: 30px;
+}
+
+#friend-avatar img {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  display: block;
+  margin: 0 auto;
+}
+
+/**********friend-info************/
+
 /**********setting*********/
 #setting-content {
   padding: 0px;

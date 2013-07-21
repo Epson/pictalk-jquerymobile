@@ -24,6 +24,16 @@
         console.log(res);
       });
     },
+    getFriendInfo: function(friendId){
+      var params;
+      params = {
+        userId: friendId
+      };
+      $.get("users/user-info-read", params, function(res){
+        res = JSON.parse(res);
+        EventCenter.trigger("Controller:show-friend-info", [res.user]);
+      });
+    },
     init: function(){
       console.log("Friend init");
     }

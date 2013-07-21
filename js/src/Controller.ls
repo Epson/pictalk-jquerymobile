@@ -8,7 +8,6 @@ Controller =
 		files = ($ "\#upload-file")[0].files
 		if files?
 			data.append "avatarFile", files[0]
-		# data.append "avatarFile", form-file-obj
 		params = 
 			cache: false,
 			type: 'post',
@@ -21,16 +20,6 @@ Controller =
 				console.log "res"
 
 		$.ajax params
-		# form = new FormData!
-		# console.log form-file-obj
-		# form.append "avatarFile", form-file-obj
-		# xhr = new XMLHttpRequest!
-		# xhr.open "post", "users/user-upload-avatar", true
-		# xhr.onreadystatechange = !->
-		# 	if( xhr.readyState == 4 )
-		# 		res = xhr.responseText 
-		# console.log form
-		# xhr.send form
 
 	user-update-avatar: !(avatar-url)->
 
@@ -51,8 +40,14 @@ Controller =
 
 	add-friend: !(friend-id)->
 		console.log "Controller:add-friend"
-		# Friend.add-friend User.user-id, friend-id
-		Friend.add-friend "121927532@qq.com", "aaa@qq.com"
+		Friend.add-friend User.user-id, friend-id
+		# Friend.add-friend "121927532@qq.com", "aaa@qq.com"
+
+	get-friend-info: !(friend-id)->
+		Friend.get-friend-info friend-id
+
+	show-friend-info: !(friend-info)->
+		Event-center.trigger "Viewer:show-friend-info", [friend-info]
 
 	subscribe-events: !->
 		Event-center.bind "Controller:user-update-avatar", Event-center.proxy this.upload-avatar, this
@@ -63,6 +58,7 @@ Controller =
 		Event-center.bind "Controller:get-friend-list", Event-center.proxy this.get-friend-list, this
 		Event-center.bind "Controller:show-friend-list", Event-center.proxy this.show-friend-list, this
 		Event-center.bind "Controller:get-friend-info", Event-center.proxy this.get-friend-info, this
+		Event-center.bind "Controller:show-friend-info", Event-center.proxy this.show-friend-info, this
 
 
 

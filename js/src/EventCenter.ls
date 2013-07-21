@@ -28,7 +28,7 @@ EventCenter =
 	 * @throws															要触发的事件类型不存在
 	 */	
 	trigger: !(event-type, param-array) ->
-		console.log "trigger: " + event-type
+		# console.log "trigger: " + event-type
 		if !@event-list
 			throw new Error "The eventList was undefined"
 
@@ -50,7 +50,7 @@ EventCenter =
 	 * @param 			{Object}context					为回调函数指定的上下文
 	 */	
 	bind: !(event-type, callback, context) ->
-		console.log "bind: " + event-type
+		# console.log "bind: " + event-type
 		if !@event-list 
 			@init!
 

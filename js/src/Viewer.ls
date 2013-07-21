@@ -42,7 +42,7 @@ Viewer =
 		contact-list.html ""
 		for i from 0 til length
 			li = $ "<li class='contact-info'>" + 
-								"<a href='javascript:void(0);'>" + 
+								"<a href='\#friend-info-page'>" + 
 									"<img src='images/1.jpeg'/>" +
 									"<span class='contact-name'>" + 
 										friend-list-array[i].username + 
@@ -54,8 +54,42 @@ Viewer =
 			contact-list.append li
 		contact-list.listview "refresh" 
 
+	show-friend-info: !(friend-info)->
+		user-id = friend-info.user-id
+		username = friend-info.username
+		email = friend-info.email
+		if friend-info.mobile?
+			mobile = friend-info.mobile
+		else
+			mobile = "未填写"
+		user-info-list = $ "\#user-info-list"
+		user-info-str = "<li>" +
+											"<span style='width:40%;display:inline-block;'>用户ID</span>" +
+											"<span style='color:gray;'>" + user-id + "</span>" +
+										"</li>" +
+										"<li>" +
+											"<span style='width:40%;display:inline-block;'>用户名</span>" +
+											"<span style='color:gray;'>" + username + "</span>" +
+										"</li>" +
+										"<li>" +
+											"<span style='width:40%;display:inline-block;'>性别</span>" +
+											"<span style='color:gray;'>男</span>" +
+										"</li>" +
+										"<li>" +
+											"<span style='width:40%;display:inline-block;'>电话号码</span>" +
+											"<span style='color:gray;'>" + mobile + "</span>" +
+										"</li>" +
+										"<li>" +
+											"<span style='width:40%;display:inline-block;'>电子邮件</span>" +
+											"<span style='color:gray;'>" + email + "</span>" +
+										"</li>"
+		user-info-list.html user-info-str
+		user-info-list.listview "refresh" 
+
+
 	subscrbe-events: !->
 		Event-center.bind "Viewer:show-friend-list", Event-center.proxy this.show-friend-list, this
+		Event-center.bind "Viewer:show-friend-info", Event-center.proxy this.show-friend-info, this
 
 	bind-events: !->
 		# change avatar
@@ -101,7 +135,7 @@ Viewer =
 		# read-friend-info
 		do 
 			(e) <-! ($ document).on "click", ".contact-info"
-			user-id = $(".contact-email")
+			user-id = $(".contact-email").html!
 			Event-center.trigger "Controller:get-friend-info", [user-id]
 
 	init: !->

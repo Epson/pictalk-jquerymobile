@@ -30,7 +30,6 @@
      */,
     trigger: function(eventType, paramArray){
       var events, i$, to$, i, eventHandler;
-      console.log("trigger: " + eventType);
       if (!this.eventList) {
         throw new Error("The eventList was undefined");
       }
@@ -54,7 +53,6 @@
      */,
     bind: function(eventType, callback, context){
       var eventHandler;
-      console.log("bind: " + eventType);
       if (!this.eventList) {
         this.init();
       }

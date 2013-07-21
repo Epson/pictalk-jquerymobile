@@ -17,6 +17,13 @@ Friend =
 		res = JSON.parse res
 		console.log res
 
+	get-friend-info: !(friend-id)->
+		params = 
+			user-id: friend-id
+		(res) <-! $.get "users/user-info-read", params
+		res = JSON.parse res
+		Event-center.trigger "Controller:show-friend-info", [res.user]
+
 	init: !->
 		console.log "Friend init" 
 
