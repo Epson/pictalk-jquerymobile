@@ -137,17 +137,18 @@ Viewer =
 	add-text-icon: !(picture, x, y)->
 		img = document.createElement("img")
 		img.src = "images/text_tip.png"
-		img.id = "text-icon"
+		img.className = "text-icon"
 		pic-pos-x = picture.offset-left
 		pic-pos-y = picture.offset-top
 		img.style.left = (pic-pos-x + x) + "px"
 		img.style.top = (pic-pos-y + y) + "px"
 		img.style.width = "50px"
 		img.style.height = "50px"
+		img.pos-x = x
+		img.pos-y = y
 		picture.parentNode.appendChild img
 
 	add-text: !(picture, x, y)->
-		console.log picture
 		@add-text-icon picture, x, y
 
 	subscrbe-events: !->
@@ -224,15 +225,57 @@ Viewer =
 		do
 			(e) <-! $(document).on "click", "\#picture"
 			console.log self.is-text-selected
-			if self.is-text-selected?
+			if self.is-text-selected != false
 				elem = e.target
 				pos-x = e.offsetX 
 				pos-y = e.offsetY
 				self.add-text this, pos-x, pos-y
+				self.is-text-selected = false
+				$(".add-text").removeClass("ui-btn-active").removeClass("ui-state-persist")
 
 		do
-			(e) <-! $(document).on "scroll", "\#create-picture"
-			console.log this.scroll-left
+			(e) <-! $(document).on "click", ".text-icon"
+			self.add-edit-area e.client-x, e.client-y
+
+		do
+			(e) <-! $(document).on "click", "\#save-message"
+			this.parentNode.style.display = "none"
+
+	add-edit-area: !(x, y)->
+		wrapper = document.getElementById "edit-area"
+		wrapper.style.width = document.body.client-width
+		wrapper.style.height = document.body.client-height
+		wrapper.style.backgroundColor = "rgba(100, 100, 100, 0.5)"
+		wrapper.style.display = "block"
+
+		text-area = document.createElement "textarea"
+		text-area.style.width = "250px"
+		text-area.style.height = "100px"
+		text-area.style.position = "absolute"
+		text-area.style.left = "50%"
+		text-area.style.top = "50%"
+		text-area.style.margin-left = "-125px";
+		text-area.style.margin-top = "-50px";
+
+		btn = $("<a href='' id='save-message' data-role='button'>submit</a>")[0]
+		btn.style.position = "absolute"
+		btn.style.left = "50%"
+		btn.style.top = "50%"
+		btn.style.margin-left = "20px";
+		btn.style.margin-top = "60px";
+		$(btn).buttonMarkup("refresh");
+
+		wrapper.appendChild text-area
+		wrapper.appendChild btn
+		document.body.appendChild wrapper
+
+	move-text-icon-with-scroll: !(e)->
+		scroll-left = this.scroll-left
+		scroll-top = this.scroll-top
+		icons = document.getElementsByClassName "text-icon"
+		for i from 0 til icons.length
+			icons[i].style.left = (icons[i].pos-x - scroll-left) + "px"
+			icons[i].style.top = (icons[i].pos-y + 45 - scroll-top) + "px"
 
 	init: !->
 		if( (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) 
@@ -248,5 +291,7 @@ Viewer =
 		@subscrbe-events!
 		@bind-events!
 		$.mobile.fixedtoolbar.prototype.options.tapToggle = false;
+
+		document.getElementById("create-picture").onscroll = @move-text-icon-with-scroll
  
 window.Viewer = Viewer

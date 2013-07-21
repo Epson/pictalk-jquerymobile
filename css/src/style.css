@@ -288,7 +288,7 @@ body {
   background-size: 30px 30px; 
 }
 
-#text-icon {
+.text-icon {
   position: absolute;
 }
 /**********new-message************/

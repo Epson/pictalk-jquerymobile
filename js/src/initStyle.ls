@@ -16,8 +16,6 @@ initMobileStyle = !->
 	indexContent.style.width = width - 20 + "px"
 	indexContent.style.height = height - 30 + "px"
 
-
-
 do
 	<-! $(document).bind "mobileinit"
 	$.mobile.page.prototype.options.addBackBtn = true

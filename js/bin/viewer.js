@@ -121,17 +121,18 @@
       var img, picPosX, picPosY;
       img = document.createElement("img");
       img.src = "images/text_tip.png";
-      img.id = "text-icon";
+      img.className = "text-icon";
       picPosX = picture.offsetLeft;
       picPosY = picture.offsetTop;
       img.style.left = (picPosX + x) + "px";
       img.style.top = (picPosY + y) + "px";
       img.style.width = "50px";
       img.style.height = "50px";
+      img.posX = x;
+      img.posY = y;
       picture.parentNode.appendChild(img);
     },
     addText: function(picture, x, y){
-      console.log(picture);
       this.addTextIcon(picture, x, y);
     },
     subscrbeEvents: function(){
@@ -193,16 +194,58 @@
       $(document).on("click", "#picture", function(e){
         var elem, posX, posY;
         console.log(self.isTextSelected);
-        if (self.isTextSelected != null) {
+        if (self.isTextSelected !== false) {
           elem = e.target;
           posX = e.offsetX;
           posY = e.offsetY;
           self.addText(this, posX, posY);
+          self.isTextSelected = false;
+          $(".add-text").removeClass("ui-btn-active").removeClass("ui-state-persist");
         }
       });
-      $(document).on("scroll", "#create-picture", function(e){
-        console.log(this.scrollLeft);
+      $(document).on("click", ".text-icon", function(e){
+        self.addEditArea(e.clientX, e.clientY);
       });
+      $(document).on("click", "#save-message", function(e){
+        this.parentNode.style.display = "none";
+      });
+    },
+    addEditArea: function(x, y){
+      var wrapper, textArea, btn;
+      wrapper = document.getElementById("edit-area");
+      wrapper.style.width = document.body.clientWidth;
+      wrapper.style.height = document.body.clientHeight;
+      wrapper.style.backgroundColor = "rgba(100, 100, 100, 0.5)";
+      wrapper.style.display = "block";
+      textArea = document.createElement("textarea");
+      textArea.style.width = "250px";
+      textArea.style.height = "100px";
+      textArea.style.position = "absolute";
+      textArea.style.left = "50%";
+      textArea.style.top = "50%";
+      textArea.style.marginLeft = "-125px";
+      textArea.style.marginTop = "-50px";
+      btn = $("<a href='' id='save-message' data-role='button'>submit</a>")[0];
+      btn.style.position = "absolute";
+      btn.style.left = "50%";
+      btn.style.top = "50%";
+      btn.style.marginLeft = "20px";
+      btn.style.marginTop = "60px";
+      $(btn).buttonMarkup("refresh");
+      wrapper.appendChild(textArea);
+      wrapper.appendChild(btn);
+      document.body.appendChild(wrapper);
+    },
+    moveTextIconWithScroll: function(e){
+      var scrollLeft, scrollTop, icons, i$, to$, i;
+      scrollLeft = this.scrollLeft;
+      scrollTop = this.scrollTop;
+      icons = document.getElementsByClassName("text-icon");
+      for (i$ = 0, to$ = icons.length; i$ < to$; ++i$) {
+        i = i$;
+        icons[i].style.left = (icons[i].posX - scrollLeft) + "px";
+        icons[i].style.top = (icons[i].posY + 45 - scrollTop) + "px";
+      }
     },
     init: function(){
       if (navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)) {
@@ -215,6 +258,7 @@
       this.subscrbeEvents();
       this.bindEvents();
       $.mobile.fixedtoolbar.prototype.options.tapToggle = false;
+      document.getElementById("create-picture").onscroll = this.moveTextIconWithScroll;
     }
   };
   window.Viewer = Viewer;
